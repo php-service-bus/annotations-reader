@@ -90,7 +90,7 @@ class DoctrineAnnotationsReader implements AnnotationsReader
      *
      * @param \ReflectionClass $class
      *
-     * @return array<mixed, \Desperado\ServiceBus\AnnotationsReader\Annotation>
+     * @return array<array-key, \Desperado\ServiceBus\AnnotationsReader\Annotation>
      */
     private function loadClassLevelAnnotations(\ReflectionClass $class): array
     {
@@ -108,7 +108,7 @@ class DoctrineAnnotationsReader implements AnnotationsReader
      *
      * @param \ReflectionClass $class
      *
-     * @return array<mixed, \Desperado\ServiceBus\AnnotationsReader\Annotation>
+     * @return array<array-key, \Desperado\ServiceBus\AnnotationsReader\Annotation>
      */
     private function loadMethodLevelAnnotations(\ReflectionClass $class): array
     {
