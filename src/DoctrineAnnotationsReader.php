@@ -30,10 +30,11 @@ class DoctrineAnnotationsReader implements AnnotationsReader
 
     /**
      * @param DoctrineAnnotations\Reader|null $reader
+     * @param array<array-key, string> $ignoredNames
      *
      * @throws \Desperado\ServiceBus\AnnotationsReader\Exceptions\ParserConfigurationError
      */
-    public function __construct(DoctrineAnnotations\Reader $reader = null)
+    public function __construct(DoctrineAnnotations\Reader $reader = null, array $ignoredNames = [])
     {
         try
         {
@@ -45,7 +46,10 @@ class DoctrineAnnotationsReader implements AnnotationsReader
 
             $this->reader = $reader ?? new DoctrineAnnotations\AnnotationReader();
 
-            DoctrineAnnotations\AnnotationReader::addGlobalIgnoredName('psalm');
+            foreach($ignoredNames as $ignoredName)
+            {
+                DoctrineAnnotations\AnnotationReader::addGlobalIgnoredName($ignoredName);
+            }
         }
             // @codeCoverageIgnoreStart
         catch(\Throwable $throwable)
