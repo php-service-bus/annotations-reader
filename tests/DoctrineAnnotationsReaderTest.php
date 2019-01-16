@@ -93,7 +93,7 @@ final class DoctrineAnnotationsReaderTest extends TestCase
      */
     public function parseClassWithErrors(): void
     {
-        (new DoctrineAnnotationsReader())->extract(ClassWithIncorrectAnnotation::class);
+        (new DoctrineAnnotationsReader(null, ['psalm']))->extract(ClassWithIncorrectAnnotation::class);
     }
 
     /**
