@@ -5,7 +5,7 @@
 
 ## What is it?
 
-Abstraction of annotation parser. Provides the ability to retrieve method-level and class-level annotations.
+Abstraction of annotation parser for [service-bus](https://github.com/mmasiukevich/service-bus) framework. Provides the ability to retrieve method-level and class-level annotations.
 Currently implemented adapter to work with DoctrineAnnotations: [DoctrineAnnotationsReader](https://github.com/mmasiukevich/annotations-reader/blob/master/src/DoctrineAnnotationsReader.php).
 All parsers must implement the [AnnotationsReader](https://github.com/mmasiukevich/annotations-reader/blob/master/src/AnnotationsReader.php#L18) interface.
 
