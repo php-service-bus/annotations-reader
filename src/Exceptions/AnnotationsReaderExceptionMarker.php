@@ -15,7 +15,7 @@ namespace Desperado\ServiceBus\AnnotationsReader\Exceptions;
 /**
  *
  */
-final class ParserConfigurationError extends \LogicException implements AnnotationsReaderExceptionMarker
+interface AnnotationsReaderExceptionMarker
 {
 
 }

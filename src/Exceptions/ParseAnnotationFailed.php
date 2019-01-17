@@ -15,7 +15,7 @@ namespace Desperado\ServiceBus\AnnotationsReader\Exceptions;
 /**
  *
  */
-final class ParseAnnotationFailed extends \RuntimeException
+final class ParseAnnotationFailed extends \RuntimeException implements AnnotationsReaderExceptionMarker
 {
 
 }
