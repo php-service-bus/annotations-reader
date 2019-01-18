@@ -1,16 +1,16 @@
 <?php
 
 /**
- * PHP Service Bus (publish-subscribe pattern implementation) annotations reader component
+ * PHP Service Bus (publish-subscribe pattern) annotations reader component
  *
- * @author  Maksim Masiukevich <desperado@minsk-info.ru>
+ * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
 
 declare(strict_types = 1);
 
-namespace Desperado\ServiceBus\AnnotationsReader;
+namespace ServiceBus\AnnotationsReader;
 
 /**
  *
@@ -20,12 +20,12 @@ final class AnnotationCollection implements \Countable, \IteratorAggregate
     /**
      * Annotations
      *
-     * @var array<array-key, \Desperado\ServiceBus\AnnotationsReader\Annotation>
+     * @var array<array-key, \ServiceBus\AnnotationsReader\Annotation>
      */
     private $collection = [];
 
     /**
-     * @param array<array-key, \Desperado\ServiceBus\AnnotationsReader\Annotation> $annotations
+     * @param array<array-key, \ServiceBus\AnnotationsReader\Annotation> $annotations
      */
     public function __construct(array $annotations = [])
     {
@@ -35,7 +35,7 @@ final class AnnotationCollection implements \Countable, \IteratorAggregate
     /**
      * Push multiple annotations
      *
-     * @param array<mixed, \Desperado\ServiceBus\AnnotationsReader\Annotation> $annotations
+     * @param array<array-key, \ServiceBus\AnnotationsReader\Annotation> $annotations
      *
      * @return void
      */
@@ -68,7 +68,7 @@ final class AnnotationCollection implements \Countable, \IteratorAggregate
      */
     public function filter(callable $callable): AnnotationCollection
     {
-        /** @var array<array-key, \Desperado\ServiceBus\AnnotationsReader\Annotation> $annotations */
+        /** @var array<array-key, \ServiceBus\AnnotationsReader\Annotation> $annotations */
         $annotations = \array_filter($this->collection, $callable);
 
         return new AnnotationCollection($annotations);

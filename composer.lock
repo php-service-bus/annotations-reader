@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "334d0546bed01ca5b069fcad2b41f4a6",
-    "content-hash": "ce054b7a836e9f9a18e2e00cf2a5a7cc",
+    "hash": "645d46a131777780534308740fc76fc4",
+    "content-hash": "e6e5362167a15920a9c873ca785a1a53",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -2245,7 +2245,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "BackEndTea@gmail.com"
+                    "email": "backendtea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",

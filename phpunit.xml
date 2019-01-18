@@ -14,7 +14,7 @@
     </php>
 
     <testsuites>
-        <testsuite name="Service Bus annotations reader">
+        <testsuite name="Service Bus annotations reader component">
             <directory>./tests/</directory>
         </testsuite>
     </testsuites>

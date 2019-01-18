@@ -1,16 +1,16 @@
 <?php
 
 /**
- * PHP Service Bus (publish-subscribe pattern implementation) annotations reader component
+ * PHP Service Bus (publish-subscribe pattern) annotations reader component
  *
- * @author  Maksim Masiukevich <desperado@minsk-info.ru>
+ * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
 
 declare(strict_types = 1);
 
-namespace Desperado\ServiceBus\AnnotationsReader\Tests\Stubs;
+namespace ServiceBus\AnnotationsReader\Tests\Stubs;
 
 /**
  * @Annotation
@@ -25,8 +25,6 @@ final class TestMethodLevelAnnotation
 
     /**
      * @param array<string, mixed> $data
-     *
-     * @throws \RuntimeException
      */
     public function __construct(array $data)
     {

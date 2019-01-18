@@ -1,19 +1,19 @@
 <?php
 
 /**
- * PHP Service Bus (publish-subscribe pattern implementation) annotations reader component
+ * PHP Service Bus (publish-subscribe pattern) annotations reader component
  *
- * @author  Maksim Masiukevich <desperado@minsk-info.ru>
+ * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
 
 declare(strict_types = 1);
 
-namespace Desperado\ServiceBus\AnnotationsReader;
+namespace ServiceBus\AnnotationsReader;
 
-use Desperado\ServiceBus\AnnotationsReader\Exceptions\ParseAnnotationFailed;
-use Desperado\ServiceBus\AnnotationsReader\Exceptions\ParserConfigurationError;
+use ServiceBus\AnnotationsReader\Exceptions\ParseAnnotationFailed;
+use ServiceBus\AnnotationsReader\Exceptions\ParserConfigurationError;
 use Doctrine\Common\Annotations as DoctrineAnnotations;
 
 /**
@@ -32,7 +32,7 @@ class DoctrineAnnotationsReader implements AnnotationsReader
      * @param DoctrineAnnotations\Reader|null $reader
      * @param array<array-key, string> $ignoredNames
      *
-     * @throws \Desperado\ServiceBus\AnnotationsReader\Exceptions\ParserConfigurationError
+     * @throws \ServiceBus\AnnotationsReader\Exceptions\ParserConfigurationError
      */
     public function __construct(DoctrineAnnotations\Reader $reader = null, array $ignoredNames = [])
     {
@@ -90,7 +90,7 @@ class DoctrineAnnotationsReader implements AnnotationsReader
      *
      * @param \ReflectionClass $class
      *
-     * @return array<array-key, \Desperado\ServiceBus\AnnotationsReader\Annotation>
+     * @return array<array-key, \ServiceBus\AnnotationsReader\Annotation>
      */
     private function loadClassLevelAnnotations(\ReflectionClass $class): array
     {
@@ -108,7 +108,7 @@ class DoctrineAnnotationsReader implements AnnotationsReader
      *
      * @param \ReflectionClass $class
      *
-     * @return array<array-key, \Desperado\ServiceBus\AnnotationsReader\Annotation>
+     * @return array<array-key, \ServiceBus\AnnotationsReader\Annotation>
      */
     private function loadMethodLevelAnnotations(\ReflectionClass $class): array
     {

@@ -1,12 +1,12 @@
 {
-  "name": "mmasiukevich/annotations-reader",
+  "name": "php-service-bus/annotations-reader",
   "description": "PHP Service Bus (publish-subscribe pattern) annotations reader component",
   "type": "library",
-  "keywords": [],
+  "keywords": ["cqrs", "event-sourcing", "async-php", "command-bus", "messaging"],
   "authors": [
     {
       "name": "Masiukevich Maksim",
-      "email": "desperado@minsk-info.ru",
+      "email": "dev@async-php.com",
       "homepage": "https://github.com/mmasiukevich",
       "role": "Developer"
     }
@@ -14,12 +14,12 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Desperado\\ServiceBus\\AnnotationsReader\\": "src/"
+      "ServiceBus\\AnnotationsReader\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Desperado\\ServiceBus\\AnnotationsReader\\Tests\\": "tests/"
+      "ServiceBus\\AnnotationsReader\\Tests\\": "tests/"
     }
   },
   "require": {

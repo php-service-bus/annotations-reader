@@ -1,22 +1,22 @@
 <?php
 
 /**
- * PHP Service Bus (publish-subscribe pattern implementation) annotations reader component
+ * PHP Service Bus (publish-subscribe pattern) annotations reader component
  *
- * @author  Maksim Masiukevich <desperado@minsk-info.ru>
+ * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
 
 declare(strict_types = 1);
 
-namespace Desperado\ServiceBus\AnnotationsReader\Tests;
+namespace ServiceBus\AnnotationsReader\Tests;
 
-use Desperado\ServiceBus\AnnotationsReader\DoctrineAnnotationsReader;
-use Desperado\ServiceBus\AnnotationsReader\Tests\Stubs\ClassWithCorrectAnnotations;
-use Desperado\ServiceBus\AnnotationsReader\Tests\Stubs\ClassWithIncorrectAnnotation;
-use Desperado\ServiceBus\AnnotationsReader\Tests\Stubs\TestClassLevelAnnotation;
-use Desperado\ServiceBus\AnnotationsReader\Tests\Stubs\TestMethodLevelAnnotation;
+use ServiceBus\AnnotationsReader\DoctrineAnnotationsReader;
+use ServiceBus\AnnotationsReader\Tests\Stubs\ClassWithCorrectAnnotations;
+use ServiceBus\AnnotationsReader\Tests\Stubs\ClassWithIncorrectAnnotation;
+use ServiceBus\AnnotationsReader\Tests\Stubs\TestClassLevelAnnotation;
+use ServiceBus\AnnotationsReader\Tests\Stubs\TestMethodLevelAnnotation;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -28,6 +28,8 @@ final class DoctrineAnnotationsReaderTest extends TestCase
      * @test
      *
      * @return void
+     *
+     * @throws \Throwable
      */
     public function parseEmptyClass(): void
     {
@@ -45,6 +47,8 @@ final class DoctrineAnnotationsReaderTest extends TestCase
      * @test
      *
      * @return void
+     *
+     * @throws \Throwable
      */
     public function parseClassWithAnnotations(): void
     {
@@ -61,7 +65,7 @@ final class DoctrineAnnotationsReaderTest extends TestCase
 
         foreach($classLevelAnnotations as $annotation)
         {
-            /** @var \Desperado\ServiceBus\AnnotationsReader\Annotation $annotation */
+            /** @var \ServiceBus\AnnotationsReader\Annotation $annotation */
 
             static::assertNull($annotation->reflectionMethod);
             static::assertEquals(ClassWithCorrectAnnotations::class, $annotation->inClass);
@@ -74,7 +78,7 @@ final class DoctrineAnnotationsReaderTest extends TestCase
 
         foreach($methodLevelAnnotations as $annotation)
         {
-            /** @var \Desperado\ServiceBus\AnnotationsReader\Annotation $annotation */
+            /** @var \ServiceBus\AnnotationsReader\Annotation $annotation */
 
             static::assertNotNull($annotation->reflectionMethod);
             static::assertEquals(ClassWithCorrectAnnotations::class, $annotation->inClass);
@@ -87,9 +91,11 @@ final class DoctrineAnnotationsReaderTest extends TestCase
 
     /**
      * @test
-     * @expectedException \Desperado\ServiceBus\AnnotationsReader\Exceptions\ParseAnnotationFailed
+     * @expectedException \ServiceBus\AnnotationsReader\Exceptions\ParseAnnotationFailed
      *
      * @return void
+     *
+     * @throws \Throwable
      */
     public function parseClassWithErrors(): void
     {
@@ -98,9 +104,11 @@ final class DoctrineAnnotationsReaderTest extends TestCase
 
     /**
      * @test
-     * @expectedException \Desperado\ServiceBus\AnnotationsReader\Exceptions\ParseAnnotationFailed
+     * @expectedException \ServiceBus\AnnotationsReader\Exceptions\ParseAnnotationFailed
      *
      * @return void
+     *
+     * @throws \Throwable
      */
     public function parseNotExistsClass(): void
     {
