@@ -14,6 +14,11 @@ namespace ServiceBus\AnnotationsReader;
 
 /**
  * Annotation data
+ *
+ * @property-read object                 $annotationObject
+ * @property-read string                 $type
+ * @property-read string                 $inClass
+ * @property-read \ReflectionMethod|null $reflectionMethod
  */
 final class Annotation
 {
@@ -61,11 +66,7 @@ final class Annotation
      */
     public static function methodLevel(\ReflectionMethod $method, object $annotation, string $inClass): self
     {
-        $self = new self(self::TYPE_METHOD_LEVEL, $annotation, $inClass);
-
-        $self->reflectionMethod = $method;
-
-        return $self;
+        return new self(self::TYPE_METHOD_LEVEL, $annotation, $inClass, $method);
     }
 
     /**
@@ -102,14 +103,16 @@ final class Annotation
     }
 
     /**
-     * @param string $type
-     * @param object $annotation
-     * @param string $inClass
+     * @param string                 $type
+     * @param object                 $annotation
+     * @param string                 $inClass
+     * @param \ReflectionMethod|null $method
      */
-    private function __construct(string $type, object $annotation, string $inClass)
+    private function __construct(string $type, object $annotation, string $inClass, ?\ReflectionMethod $method = null)
     {
         $this->type             = $type;
         $this->annotationObject = $annotation;
         $this->inClass          = $inClass;
+        $this->reflectionMethod = $method;
     }
 }
