@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHP Service Bus (publish-subscribe pattern) annotations reader component
+ * PHP Service Bus annotations reader component
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
@@ -9,7 +9,6 @@
  */
 
 declare(strict_types = 1);
-
 namespace ServiceBus\AnnotationsReader;
 
 use ServiceBus\AnnotationsReader\Exceptions\ParseAnnotationFailed;

@@ -1,6 +1,6 @@
 {
   "name": "php-service-bus/annotations-reader",
-  "description": "PHP Service Bus (publish-subscribe pattern) annotations reader component",
+  "description": "PHP Service Bus annotations reader component",
   "type": "library",
   "keywords": ["cqrs", "event-sourcing", "async-php", "command-bus", "messaging"],
   "authors": [
