@@ -9,6 +9,7 @@
  */
 
 declare(strict_types = 1);
+
 namespace ServiceBus\AnnotationsReader;
 
 use ServiceBus\AnnotationsReader\Exceptions\ParseAnnotationFailed;
