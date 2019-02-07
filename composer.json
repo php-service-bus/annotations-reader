@@ -2,7 +2,11 @@
   "name": "php-service-bus/annotations-reader",
   "description": "PHP Service Bus annotations reader component",
   "type": "library",
-  "keywords": ["cqrs", "event-sourcing", "async-php", "command-bus", "messaging"],
+  "keywords": [
+    "async-php",
+    "command-bus",
+    "messaging"
+  ],
   "authors": [
     {
       "name": "Masiukevich Maksim",
