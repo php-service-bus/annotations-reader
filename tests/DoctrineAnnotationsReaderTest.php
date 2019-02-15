@@ -13,6 +13,7 @@ declare(strict_types = 1);
 namespace ServiceBus\AnnotationsReader\Tests;
 
 use ServiceBus\AnnotationsReader\DoctrineAnnotationsReader;
+use ServiceBus\AnnotationsReader\Exceptions\ParseAnnotationFailed;
 use ServiceBus\AnnotationsReader\Tests\Stubs\ClassWithCorrectAnnotations;
 use ServiceBus\AnnotationsReader\Tests\Stubs\ClassWithIncorrectAnnotation;
 use ServiceBus\AnnotationsReader\Tests\Stubs\TestClassLevelAnnotation;
@@ -91,7 +92,6 @@ final class DoctrineAnnotationsReaderTest extends TestCase
 
     /**
      * @test
-     * @expectedException \ServiceBus\AnnotationsReader\Exceptions\ParseAnnotationFailed
      *
      * @return void
      *
@@ -99,12 +99,13 @@ final class DoctrineAnnotationsReaderTest extends TestCase
      */
     public function parseClassWithErrors(): void
     {
+        $this->expectException(ParseAnnotationFailed::class);
+
         (new DoctrineAnnotationsReader(null, ['psalm']))->extract(ClassWithIncorrectAnnotation::class);
     }
 
     /**
      * @test
-     * @expectedException \ServiceBus\AnnotationsReader\Exceptions\ParseAnnotationFailed
      *
      * @return void
      *
@@ -112,6 +113,8 @@ final class DoctrineAnnotationsReaderTest extends TestCase
      */
     public function parseNotExistsClass(): void
     {
+        $this->expectException(ParseAnnotationFailed::class);
+
         (new DoctrineAnnotationsReader())->extract('qwerty');
     }
 }

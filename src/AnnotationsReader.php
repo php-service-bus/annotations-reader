@@ -20,6 +20,8 @@ interface AnnotationsReader
     /**
      * Extract class/method level annotations
      *
+     * @psalm-param class-string $class
+     *
      * @param string $class
      *
      * @return AnnotationCollection
