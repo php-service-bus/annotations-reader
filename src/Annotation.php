@@ -44,6 +44,7 @@ final class Annotation
     /**
      * The class containing the annotation
      *
+     * @psalm-var class-string
      * @var string
      */
     public $inClass;
@@ -58,6 +59,8 @@ final class Annotation
     /**
      * Creating a method level annotation VO
      *
+     * @psalm-param class-string $inClass
+     *
      * @param \ReflectionMethod $method
      * @param object            $annotation
      * @param string            $inClass
@@ -71,6 +74,8 @@ final class Annotation
 
     /**
      * Creating a method level annotation
+     *
+     * @psalm-param class-string $inClass
      *
      * @param object $annotation
      * @param string $inClass
@@ -103,6 +108,8 @@ final class Annotation
     }
 
     /**
+     * @psalm-param class-string $inClass
+     *
      * @param string                 $type
      * @param object                 $annotation
      * @param string                 $inClass

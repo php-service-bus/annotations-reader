@@ -29,8 +29,10 @@ class DoctrineAnnotationsReader implements AnnotationsReader
     private $reader;
 
     /**
+     * @psalm-param array<array-key, string> $ignoredNames
+     *
      * @param DoctrineAnnotations\Reader|null $reader
-     * @param array<array-key, string> $ignoredNames
+     * @param string[]                        $ignoredNames
      *
      * @throws \ServiceBus\AnnotationsReader\Exceptions\ParserConfigurationError
      */
@@ -88,9 +90,11 @@ class DoctrineAnnotationsReader implements AnnotationsReader
     /**
      * Gets the annotations applied to a class
      *
+     * @psalm-return array<array-key, \ServiceBus\AnnotationsReader\Annotation>
+     *
      * @param \ReflectionClass $class
      *
-     * @return array<array-key, \ServiceBus\AnnotationsReader\Annotation>
+     * @return \ServiceBus\AnnotationsReader\Annotation[]
      */
     private function loadClassLevelAnnotations(\ReflectionClass $class): array
     {
@@ -106,9 +110,11 @@ class DoctrineAnnotationsReader implements AnnotationsReader
     /**
      * Gets the annotations applied to a method
      *
+     * @psalm-return array<array-key, \ServiceBus\AnnotationsReader\Annotation>
+     *
      * @param \ReflectionClass $class
      *
-     * @return array<array-key, \ServiceBus\AnnotationsReader\Annotation>
+     * @return \ServiceBus\AnnotationsReader\Annotation[]
      */
     private function loadMethodLevelAnnotations(\ReflectionClass $class): array
     {

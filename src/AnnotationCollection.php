@@ -20,12 +20,15 @@ final class AnnotationCollection implements \Countable, \IteratorAggregate
     /**
      * Annotations
      *
-     * @var array<array-key, \ServiceBus\AnnotationsReader\Annotation>
+     * @psalm-var array<array-key, \ServiceBus\AnnotationsReader\Annotation>
+     * @var \ServiceBus\AnnotationsReader\Annotation[]
      */
     private $collection = [];
 
     /**
-     * @param array<array-key, \ServiceBus\AnnotationsReader\Annotation> $annotations
+     * @psalm-param array<array-key, \ServiceBus\AnnotationsReader\Annotation> $annotations
+     *
+     * @param \ServiceBus\AnnotationsReader\Annotation[] $annotations
      */
     public function __construct(array $annotations = [])
     {
@@ -35,7 +38,9 @@ final class AnnotationCollection implements \Countable, \IteratorAggregate
     /**
      * Push multiple annotations
      *
-     * @param array<array-key, \ServiceBus\AnnotationsReader\Annotation> $annotations
+     * @psalm-param array<array-key, \ServiceBus\AnnotationsReader\Annotation> $annotations
+     *
+     * @param \ServiceBus\AnnotationsReader\Annotation[] $annotations
      *
      * @return void
      */
@@ -68,7 +73,7 @@ final class AnnotationCollection implements \Countable, \IteratorAggregate
      */
     public function filter(callable $callable): AnnotationCollection
     {
-        /** @var array<array-key, \ServiceBus\AnnotationsReader\Annotation> $annotations */
+        /** @psalm-var array<array-key, \ServiceBus\AnnotationsReader\Annotation> $annotations */
         $annotations = \array_filter($this->collection, $callable);
 
         return new AnnotationCollection($annotations);
