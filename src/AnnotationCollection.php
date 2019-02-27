@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHP Service Bus annotations reader component
+ * PHP Service Bus annotations reader component.
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
@@ -13,14 +13,15 @@ declare(strict_types = 1);
 namespace ServiceBus\AnnotationsReader;
 
 /**
- *
+ * Annotation collection.
  */
 final class AnnotationCollection implements \Countable, \IteratorAggregate
 {
     /**
-     * Annotations
+     * Annotations.
      *
      * @psalm-var array<array-key, \ServiceBus\AnnotationsReader\Annotation>
+     *
      * @var \ServiceBus\AnnotationsReader\Annotation[]
      */
     private $collection = [];
@@ -36,7 +37,7 @@ final class AnnotationCollection implements \Countable, \IteratorAggregate
     }
 
     /**
-     * Push multiple annotations
+     * Push multiple annotations.
      *
      * @psalm-param array<array-key, \ServiceBus\AnnotationsReader\Annotation> $annotations
      *
@@ -46,14 +47,14 @@ final class AnnotationCollection implements \Countable, \IteratorAggregate
      */
     public function push(array $annotations): void
     {
-        foreach($annotations as $annotation)
+        foreach ($annotations as $annotation)
         {
             $this->add($annotation);
         }
     }
 
     /**
-     * Add annotation data to collection
+     * Add annotation data to collection.
      *
      * @param Annotation $annotation
      *
@@ -65,7 +66,7 @@ final class AnnotationCollection implements \Countable, \IteratorAggregate
     }
 
     /**
-     * Filter collection data
+     * Filter collection data.
      *
      * @param callable(Annotation):?Annotation $callable
      *
@@ -80,7 +81,7 @@ final class AnnotationCollection implements \Countable, \IteratorAggregate
     }
 
     /**
-     * Find all method-level annotations
+     * Find all method-level annotations.
      *
      * @return AnnotationCollection
      */
@@ -97,7 +98,7 @@ final class AnnotationCollection implements \Countable, \IteratorAggregate
     }
 
     /**
-     * Find all class-level annotations
+     * Find all class-level annotations.
      *
      * @return AnnotationCollection
      */
@@ -114,7 +115,7 @@ final class AnnotationCollection implements \Countable, \IteratorAggregate
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getIterator(): \Generator
     {
@@ -122,7 +123,7 @@ final class AnnotationCollection implements \Countable, \IteratorAggregate
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function count(): int
     {

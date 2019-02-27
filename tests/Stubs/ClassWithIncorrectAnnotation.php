@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHP Service Bus annotations reader component
+ * PHP Service Bus annotations reader component.
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
@@ -17,5 +17,4 @@ namespace ServiceBus\AnnotationsReader\Tests\Stubs;
  */
 final class ClassWithIncorrectAnnotation
 {
-
 }

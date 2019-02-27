@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHP Service Bus annotations reader component
+ * PHP Service Bus annotations reader component.
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
@@ -12,17 +12,17 @@ declare(strict_types = 1);
 
 namespace ServiceBus\AnnotationsReader;
 
+use Doctrine\Common\Annotations as DoctrineAnnotations;
 use ServiceBus\AnnotationsReader\Exceptions\ParseAnnotationFailed;
 use ServiceBus\AnnotationsReader\Exceptions\ParserConfigurationError;
-use Doctrine\Common\Annotations as DoctrineAnnotations;
 
 /**
- * Doctrine2 annotations reader
+ * Doctrine2 annotations reader.
  */
 class DoctrineAnnotationsReader implements AnnotationsReader
 {
     /**
-     * Annotations reader
+     * Annotations reader.
      *
      * @var DoctrineAnnotations\Reader
      */
@@ -48,13 +48,13 @@ class DoctrineAnnotationsReader implements AnnotationsReader
 
             $this->reader = $reader ?? new DoctrineAnnotations\AnnotationReader();
 
-            foreach($ignoredNames as $ignoredName)
+            foreach ($ignoredNames as $ignoredName)
             {
                 DoctrineAnnotations\AnnotationReader::addGlobalIgnoredName($ignoredName);
             }
         }
-            // @codeCoverageIgnoreStart
-        catch(\Throwable $throwable)
+        // @codeCoverageIgnoreStart
+        catch (\Throwable $throwable)
         {
             throw new ParserConfigurationError($throwable->getMessage());
         }
@@ -62,7 +62,7 @@ class DoctrineAnnotationsReader implements AnnotationsReader
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function extract(string $class): AnnotationCollection
     {
@@ -81,14 +81,14 @@ class DoctrineAnnotationsReader implements AnnotationsReader
 
             return $collection;
         }
-        catch(\Throwable $throwable)
+        catch (\Throwable $throwable)
         {
             throw new ParseAnnotationFailed($throwable->getMessage(), (int) $throwable->getCode(), $throwable);
         }
     }
 
     /**
-     * Gets the annotations applied to a class
+     * Gets the annotations applied to a class.
      *
      * @psalm-return array<array-key, \ServiceBus\AnnotationsReader\Annotation>
      *
@@ -108,7 +108,7 @@ class DoctrineAnnotationsReader implements AnnotationsReader
     }
 
     /**
-     * Gets the annotations applied to a method
+     * Gets the annotations applied to a method.
      *
      * @psalm-return array<array-key, \ServiceBus\AnnotationsReader\Annotation>
      *
@@ -120,12 +120,12 @@ class DoctrineAnnotationsReader implements AnnotationsReader
     {
         $annotations = [];
 
-        foreach($class->getMethods() as $method)
+        foreach ($class->getMethods() as $method)
         {
             $methodAnnotations = $this->reader->getMethodAnnotations($method);
 
             /** @var object $methodAnnotation */
-            foreach($methodAnnotations as $methodAnnotation)
+            foreach ($methodAnnotations as $methodAnnotation)
             {
                 $annotations[] = Annotation::methodLevel($method, $methodAnnotation, $class->getName());
             }

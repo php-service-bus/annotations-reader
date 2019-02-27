@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHP Service Bus annotations reader component
+ * PHP Service Bus annotations reader component.
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
@@ -26,6 +26,5 @@ final class ClassWithCorrectAnnotations
      */
     private function methodLevel(): void
     {
-
     }
 }

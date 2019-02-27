@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHP Service Bus annotations reader component
+ * PHP Service Bus annotations reader component.
  *
  * @author  Maksim Masiukevich <dev@async-php.com>
  * @license MIT
@@ -13,7 +13,7 @@ declare(strict_types = 1);
 namespace ServiceBus\AnnotationsReader;
 
 /**
- * Annotation data
+ * Annotation data.
  *
  * @property-read object                 $annotationObject
  * @property-read string                 $type
@@ -23,17 +23,18 @@ namespace ServiceBus\AnnotationsReader;
 final class Annotation
 {
     private const TYPE_CLASS_LEVEL  = 'class_level';
+
     private const TYPE_METHOD_LEVEL = 'method_level';
 
     /**
-     * Annotation
+     * Annotation.
      *
      * @var object
      */
     public $annotationObject;
 
     /**
-     * Annotation type
+     * Annotation type.
      *
      * @see self::TYPE_*
      *
@@ -42,22 +43,23 @@ final class Annotation
     public $type;
 
     /**
-     * The class containing the annotation
+     * The class containing the annotation.
      *
      * @psalm-var class-string
+     *
      * @var string
      */
     public $inClass;
 
     /**
-     * Specified if type = method_level
+     * Specified if type = method_level.
      *
      * @var \ReflectionMethod|null
      */
     public $reflectionMethod;
 
     /**
-     * Creating a method level annotation VO
+     * Creating a method level annotation VO.
      *
      * @psalm-param class-string $inClass
      *
@@ -73,7 +75,7 @@ final class Annotation
     }
 
     /**
-     * Creating a method level annotation
+     * Creating a method level annotation.
      *
      * @psalm-param class-string $inClass
      *
