@@ -28,7 +28,7 @@
   },
   "require": {
     "php": ">=7.3",
-    "doctrine/annotations": "v1.6.*",
+    "doctrine/annotations": "v1.7.*",
     "doctrine/cache": "v1.8.*"
   },
   "require-dev": {
