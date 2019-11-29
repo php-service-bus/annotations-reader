@@ -73,7 +73,6 @@ final class DoctrineAnnotationsReaderTest extends TestCase
             static::assertSame('class_level', $annotation->type);
             static::assertTrue($annotation->isClassLevel());
             static::assertFalse($annotation->isMethodLevel());
-            /** @noinspection UnnecessaryAssertionInspection */
             static::assertInstanceOf(TestClassLevelAnnotation::class, $annotation->annotationObject);
         }
 
@@ -84,7 +83,6 @@ final class DoctrineAnnotationsReaderTest extends TestCase
             static::assertSame(ClassWithCorrectAnnotations::class, $annotation->inClass);
             static::assertSame('method_level', $annotation->type);
             static::assertFalse($annotation->isClassLevel());
-            /** @noinspection UnnecessaryAssertionInspection */
             static::assertInstanceOf(TestMethodLevelAnnotation::class, $annotation->annotationObject);
         }
     }

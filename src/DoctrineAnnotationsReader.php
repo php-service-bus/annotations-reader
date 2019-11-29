@@ -23,15 +23,12 @@ class DoctrineAnnotationsReader implements AnnotationsReader
 {
     /**
      * Annotations reader.
-     *
-     * @var DoctrineAnnotations\Reader
      */
-    private $reader;
+    private DoctrineAnnotations\Reader $reader;
 
     /**
      * @psalm-param array<array-key, string> $ignoredNames
      *
-     * @param DoctrineAnnotations\Reader|null $reader
      * @param string[]                        $ignoredNames
      *
      * @throws \ServiceBus\AnnotationsReader\Exceptions\ParserConfigurationError
@@ -92,8 +89,6 @@ class DoctrineAnnotationsReader implements AnnotationsReader
      *
      * @psalm-return array<array-key, \ServiceBus\AnnotationsReader\Annotation>
      *
-     * @param \ReflectionClass $class
-     *
      * @return \ServiceBus\AnnotationsReader\Annotation[]
      */
     private function loadClassLevelAnnotations(\ReflectionClass $class): array
@@ -111,8 +106,6 @@ class DoctrineAnnotationsReader implements AnnotationsReader
      * Gets the annotations applied to a method.
      *
      * @psalm-return array<array-key, \ServiceBus\AnnotationsReader\Annotation>
-     *
-     * @param \ReflectionClass $class
      *
      * @return \ServiceBus\AnnotationsReader\Annotation[]
      */

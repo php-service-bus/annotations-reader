@@ -18,10 +18,7 @@ namespace ServiceBus\AnnotationsReader\Tests\Stubs;
  */
 final class TestClassLevelAnnotation
 {
-    /**
-     * @var string
-     */
-    private $property;
+    private string $property;
 
     /**
      * @param array<string, mixed> $data

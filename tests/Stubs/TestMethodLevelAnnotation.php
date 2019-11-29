@@ -18,13 +18,10 @@ namespace ServiceBus\AnnotationsReader\Tests\Stubs;
  */
 final class TestMethodLevelAnnotation
 {
-    /**
-     * @var string
-     */
-    private $property;
+    private string $property;
 
     /**
-     * @param array<string, mixed> $data
+     * @psalm-param array<string, mixed> $data
      */
     public function __construct(array $data)
     {
@@ -34,9 +31,6 @@ final class TestMethodLevelAnnotation
         }
     }
 
-    /**
-     * @return string
-     */
     public function property(): string
     {
         return $this->property;

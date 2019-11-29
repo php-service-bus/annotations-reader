@@ -22,11 +22,7 @@ interface AnnotationsReader
      *
      * @psalm-param class-string $class
      *
-     * @param string $class
-     *
      * @throws \ServiceBus\AnnotationsReader\Exceptions\ParseAnnotationFailed
-     *
-     * @return AnnotationCollection
      */
     public function extract(string $class): AnnotationCollection;
 }

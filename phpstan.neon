@@ -1,5 +1,1 @@
 parameters:
-	ignoreErrors:
-		-
-			message: '#callback of function array_filter expects#'
-			path: %currentWorkingDirectory%/src/AnnotationCollection.php

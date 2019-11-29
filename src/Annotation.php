@@ -15,10 +15,7 @@ namespace ServiceBus\AnnotationsReader;
 /**
  * Annotation data.
  *
- * @property-read object                 $annotationObject
- * @property-read string                 $type
- * @property-read string                 $inClass
- * @property-read \ReflectionMethod|null $reflectionMethod
+ * @psalm-readonly
  */
 final class Annotation
 {
@@ -28,46 +25,32 @@ final class Annotation
 
     /**
      * Annotation.
-     *
-     * @var object
      */
-    public $annotationObject;
+    public object $annotationObject;
 
     /**
      * Annotation type.
      *
      * @see self::TYPE_*
-     *
-     * @var string
      */
-    public $type;
+    public string $type;
 
     /**
      * The class containing the annotation.
      *
      * @psalm-var class-string
-     *
-     * @var string
      */
-    public $inClass;
+    public string $inClass;
 
     /**
      * Specified if type = method_level.
-     *
-     * @var \ReflectionMethod|null
      */
-    public $reflectionMethod;
+    public ?\ReflectionMethod$reflectionMethod;
 
     /**
      * Creating a method level annotation VO.
      *
      * @psalm-param class-string $inClass
-     *
-     * @param \ReflectionMethod $method
-     * @param object            $annotation
-     * @param string            $inClass
-     *
-     * @return self
      */
     public static function methodLevel(\ReflectionMethod $method, object $annotation, string $inClass): self
     {
@@ -78,11 +61,6 @@ final class Annotation
      * Creating a method level annotation.
      *
      * @psalm-param class-string $inClass
-     *
-     * @param object $annotation
-     * @param string $inClass
-     *
-     * @return self
      */
     public static function classLevel(object $annotation, string $inClass): self
     {
@@ -91,8 +69,6 @@ final class Annotation
 
     /**
      * Is a class-level annotation?
-     *
-     * @return bool
      */
     public function isClassLevel(): bool
     {
@@ -101,8 +77,6 @@ final class Annotation
 
     /**
      * Is a method-level annotation?
-     *
-     * @return bool
      */
     public function isMethodLevel(): bool
     {
@@ -111,11 +85,6 @@ final class Annotation
 
     /**
      * @psalm-param class-string $inClass
-     *
-     * @param string                 $type
-     * @param object                 $annotation
-     * @param string                 $inClass
-     * @param \ReflectionMethod|null $method
      */
     private function __construct(string $type, object $annotation, string $inClass, ?\ReflectionMethod $method = null)
     {

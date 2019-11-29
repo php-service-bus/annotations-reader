@@ -24,7 +24,9 @@ final class AnnotationCollection implements \Countable, \IteratorAggregate
      *
      * @var \ServiceBus\AnnotationsReader\Annotation[]
      */
-    private $collection = [];
+    private array
+
+ $collection = [];
 
     /**
      * @psalm-param array<array-key, \ServiceBus\AnnotationsReader\Annotation> $annotations
@@ -42,8 +44,6 @@ final class AnnotationCollection implements \Countable, \IteratorAggregate
      * @psalm-param array<array-key, \ServiceBus\AnnotationsReader\Annotation> $annotations
      *
      * @param \ServiceBus\AnnotationsReader\Annotation[] $annotations
-     *
-     * @return void
      */
     public function push(array $annotations): void
     {
@@ -55,10 +55,6 @@ final class AnnotationCollection implements \Countable, \IteratorAggregate
 
     /**
      * Add annotation data to collection.
-     *
-     * @param Annotation $annotation
-     *
-     * @return void
      */
     public function add(Annotation $annotation): void
     {
@@ -68,9 +64,7 @@ final class AnnotationCollection implements \Countable, \IteratorAggregate
     /**
      * Filter collection data.
      *
-     * @param callable(Annotation):?Annotation $callable
-     *
-     * @return AnnotationCollection
+     * @psalm-param callable(Annotation):?Annotation $callable
      */
     public function filter(callable $callable): AnnotationCollection
     {
@@ -82,8 +76,6 @@ final class AnnotationCollection implements \Countable, \IteratorAggregate
 
     /**
      * Find all method-level annotations.
-     *
-     * @return AnnotationCollection
      */
     public function methodLevelAnnotations(): AnnotationCollection
     {
@@ -99,8 +91,6 @@ final class AnnotationCollection implements \Countable, \IteratorAggregate
 
     /**
      * Find all class-level annotations.
-     *
-     * @return AnnotationCollection
      */
     public function classLevelAnnotations(): AnnotationCollection
     {
