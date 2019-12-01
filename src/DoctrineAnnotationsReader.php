@@ -94,7 +94,7 @@ class DoctrineAnnotationsReader implements AnnotationsReader
     private function loadClassLevelAnnotations(\ReflectionClass $class): array
     {
         return \array_map(
-            static function(object $sagaAnnotation) use ($class): Annotation
+            static function (object $sagaAnnotation) use ($class): Annotation
             {
                 return Annotation::classLevel($sagaAnnotation, $class->getName());
             },

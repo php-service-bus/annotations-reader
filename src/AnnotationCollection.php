@@ -24,9 +24,7 @@ final class AnnotationCollection implements \Countable, \IteratorAggregate
      *
      * @var \ServiceBus\AnnotationsReader\Annotation[]
      */
-    private array
-
- $collection = [];
+    private array $collection = [];
 
     /**
      * @psalm-param array<array-key, \ServiceBus\AnnotationsReader\Annotation> $annotations
@@ -80,7 +78,7 @@ final class AnnotationCollection implements \Countable, \IteratorAggregate
     public function methodLevelAnnotations(): AnnotationCollection
     {
         return $this->filter(
-            static function(Annotation $annotation): ?Annotation
+            static function (Annotation $annotation): ?Annotation
             {
                 return false === $annotation->isClassLevel()
                     ? $annotation
@@ -95,7 +93,7 @@ final class AnnotationCollection implements \Countable, \IteratorAggregate
     public function classLevelAnnotations(): AnnotationCollection
     {
         return $this->filter(
-            static function(Annotation $annotation): ?Annotation
+            static function (Annotation $annotation): ?Annotation
             {
                 return true === $annotation->isClassLevel()
                     ? $annotation
