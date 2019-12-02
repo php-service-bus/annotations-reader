@@ -13,7 +13,9 @@ declare(strict_types = 1);
 namespace ServiceBus\AnnotationsReader\Tests;
 
 use PHPUnit\Framework\TestCase;
-use ServiceBus\AnnotationsReader\DoctrineAnnotationsReader;
+use ServiceBus\AnnotationsReader\Annotation\ClassLevel;
+use ServiceBus\AnnotationsReader\Annotation\MethodLevel;
+use ServiceBus\AnnotationsReader\DoctrineReader;
 use ServiceBus\AnnotationsReader\Exceptions\ParseAnnotationFailed;
 use ServiceBus\AnnotationsReader\Tests\Stubs\ClassWithCorrectAnnotations;
 use ServiceBus\AnnotationsReader\Tests\Stubs\ClassWithIncorrectAnnotation;
@@ -39,9 +41,10 @@ final class DoctrineAnnotationsReaderTest extends TestCase
         {
         };
 
-        $annotations = (new DoctrineAnnotationsReader())->extract(\get_class($object));
+        $annotations = (new DoctrineReader())->extract(\get_class($object));
 
-        static::assertEmpty($annotations);
+        static::assertCount(0, $annotations->methodLevelCollection);
+        static::assertCount(0, $annotations->classLevelCollection);
     }
 
     /**
@@ -54,36 +57,30 @@ final class DoctrineAnnotationsReaderTest extends TestCase
      */
     public function parseClassWithAnnotations(): void
     {
-        $annotations = (new DoctrineAnnotationsReader())->extract(ClassWithCorrectAnnotations::class);
+        $result = (new DoctrineReader())->extract(ClassWithCorrectAnnotations::class);
 
-        static::assertNotEmpty($annotations);
-        static::assertCount(2, $annotations);
+        static::assertCount(1, $result->classLevelCollection);
+        static::assertCount(1, $result->methodLevelCollection);
 
-        $classLevelAnnotations  = $annotations->classLevelAnnotations();
-        $methodLevelAnnotations = $annotations->methodLevelAnnotations();
+        $classLevelAnnotations  = $result->classLevelCollection;
+        $methodLevelAnnotations =$result->methodLevelCollection;
 
         static::assertCount(1, $classLevelAnnotations);
         static::assertCount(1, $methodLevelAnnotations);
 
+        /** @var ClassLevel $annotation */
         foreach ($classLevelAnnotations as $annotation)
         {
-            /** @var \ServiceBus\AnnotationsReader\Annotation $annotation */
-            static::assertNull($annotation->reflectionMethod);
             static::assertSame(ClassWithCorrectAnnotations::class, $annotation->inClass);
-            static::assertSame('class_level', $annotation->type);
-            static::assertTrue($annotation->isClassLevel());
-            static::assertFalse($annotation->isMethodLevel());
-            static::assertInstanceOf(TestClassLevelAnnotation::class, $annotation->annotationObject);
+            static::assertInstanceOf(TestClassLevelAnnotation::class, $annotation->annotation);
         }
 
+        /** @var MethodLevel $annotation */
         foreach ($methodLevelAnnotations as $annotation)
         {
-            /** @var \ServiceBus\AnnotationsReader\Annotation $annotation */
             static::assertNotNull($annotation->reflectionMethod);
             static::assertSame(ClassWithCorrectAnnotations::class, $annotation->inClass);
-            static::assertSame('method_level', $annotation->type);
-            static::assertFalse($annotation->isClassLevel());
-            static::assertInstanceOf(TestMethodLevelAnnotation::class, $annotation->annotationObject);
+            static::assertInstanceOf(TestMethodLevelAnnotation::class, $annotation->annotation);
         }
     }
 
@@ -99,7 +96,7 @@ final class DoctrineAnnotationsReaderTest extends TestCase
     {
         $this->expectException(ParseAnnotationFailed::class);
 
-        (new DoctrineAnnotationsReader(null, ['psalm']))->extract(ClassWithIncorrectAnnotation::class);
+        (new DoctrineReader(null, ['psalm']))->extract(ClassWithIncorrectAnnotation::class);
     }
 
     /**
@@ -114,6 +111,6 @@ final class DoctrineAnnotationsReaderTest extends TestCase
     {
         $this->expectException(ParseAnnotationFailed::class);
 
-        (new DoctrineAnnotationsReader())->extract('qwerty');
+        (new DoctrineReader())->extract('qwerty');
     }
 }

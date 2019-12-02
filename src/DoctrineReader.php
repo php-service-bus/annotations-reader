@@ -13,13 +13,15 @@ declare(strict_types = 1);
 namespace ServiceBus\AnnotationsReader;
 
 use Doctrine\Common\Annotations as DoctrineAnnotations;
+use ServiceBus\AnnotationsReader\Annotation\ClassLevel;
+use ServiceBus\AnnotationsReader\Annotation\MethodLevel;
 use ServiceBus\AnnotationsReader\Exceptions\ParseAnnotationFailed;
 use ServiceBus\AnnotationsReader\Exceptions\ParserConfigurationError;
 
 /**
  * Doctrine2 annotations reader.
  */
-class DoctrineAnnotationsReader implements AnnotationsReader
+class DoctrineReader implements Reader
 {
     /**
      * Annotations reader.
@@ -29,7 +31,7 @@ class DoctrineAnnotationsReader implements AnnotationsReader
     /**
      * @psalm-param array<array-key, string> $ignoredNames
      *
-     * @param string[]                        $ignoredNames
+     * @param string[] $ignoredNames
      *
      * @throws \ServiceBus\AnnotationsReader\Exceptions\ParserConfigurationError
      */
@@ -61,22 +63,24 @@ class DoctrineAnnotationsReader implements AnnotationsReader
     /**
      * {@inheritdoc}
      */
-    public function extract(string $class): AnnotationCollection
+    public function extract(string $class): Result
     {
         try
         {
             $reflectionClass = new \ReflectionClass($class);
-            $collection      = new AnnotationCollection();
+            $result          = new Result();
 
-            $collection->push(
-                $this->loadClassLevelAnnotations($reflectionClass)
-            );
+            foreach ($this->loadClassLevelAnnotations($reflectionClass) as $annotation)
+            {
+                $result->addClassLevelAnnotation($annotation);
+            }
 
-            $collection->push(
-                $this->loadMethodLevelAnnotations($reflectionClass)
-            );
+            foreach ($this->loadMethodLevelAnnotations($reflectionClass) as $annotation)
+            {
+                $result->addMethodAnnotation($annotation);
+            }
 
-            return $collection;
+            return $result;
         }
         catch (\Throwable $throwable)
         {
@@ -87,16 +91,14 @@ class DoctrineAnnotationsReader implements AnnotationsReader
     /**
      * Gets the annotations applied to a class.
      *
-     * @psalm-return array<array-key, \ServiceBus\AnnotationsReader\Annotation>
-     *
-     * @return \ServiceBus\AnnotationsReader\Annotation[]
+     * @return ClassLevel[]
      */
     private function loadClassLevelAnnotations(\ReflectionClass $class): array
     {
         return \array_map(
-            static function (object $sagaAnnotation) use ($class): Annotation
+            static function (object $sagaAnnotation) use ($class): ClassLevel
             {
-                return Annotation::classLevel($sagaAnnotation, $class->getName());
+                return new ClassLevel($sagaAnnotation, $class->getName());
             },
             $this->reader->getClassAnnotations($class)
         );
@@ -105,9 +107,7 @@ class DoctrineAnnotationsReader implements AnnotationsReader
     /**
      * Gets the annotations applied to a method.
      *
-     * @psalm-return array<array-key, \ServiceBus\AnnotationsReader\Annotation>
-     *
-     * @return \ServiceBus\AnnotationsReader\Annotation[]
+     * @return MethodLevel[]
      */
     private function loadMethodLevelAnnotations(\ReflectionClass $class): array
     {
@@ -120,7 +120,7 @@ class DoctrineAnnotationsReader implements AnnotationsReader
             /** @var object $methodAnnotation */
             foreach ($methodAnnotations as $methodAnnotation)
             {
-                $annotations[] = Annotation::methodLevel($method, $methodAnnotation, $class->getName());
+                $annotations[] = new MethodLevel($methodAnnotation, $class->getName(), $method);
             }
         }
 

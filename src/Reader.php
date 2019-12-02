@@ -15,7 +15,7 @@ namespace ServiceBus\AnnotationsReader;
 /**
  * Annotation extractor.
  */
-interface AnnotationsReader
+interface Reader
 {
     /**
      * Extract class/method level annotations.
@@ -24,5 +24,5 @@ interface AnnotationsReader
      *
      * @throws \ServiceBus\AnnotationsReader\Exceptions\ParseAnnotationFailed
      */
-    public function extract(string $class): AnnotationCollection;
+    public function extract(string $class): Result;
 }
