@@ -25,8 +25,10 @@ class DoctrineReader implements Reader
 {
     /**
      * Annotations reader.
+     *
+     * @var DoctrineAnnotations\Reader
      */
-    private DoctrineAnnotations\Reader $reader;
+    private $reader;
 
     /**
      * @psalm-param array<array-key, string> $ignoredNames
@@ -47,13 +49,13 @@ class DoctrineReader implements Reader
 
             $this->reader = $reader ?? new DoctrineAnnotations\AnnotationReader();
 
-            foreach ($ignoredNames as $ignoredName)
+            foreach($ignoredNames as $ignoredName)
             {
                 DoctrineAnnotations\AnnotationReader::addGlobalIgnoredName($ignoredName);
             }
         }
-        // @codeCoverageIgnoreStart
-        catch (\Throwable $throwable)
+            // @codeCoverageIgnoreStart
+        catch(\Throwable $throwable)
         {
             throw new ParserConfigurationError($throwable->getMessage());
         }
@@ -70,19 +72,19 @@ class DoctrineReader implements Reader
             $reflectionClass = new \ReflectionClass($class);
             $result          = new Result();
 
-            foreach ($this->loadClassLevelAnnotations($reflectionClass) as $annotation)
+            foreach($this->loadClassLevelAnnotations($reflectionClass) as $annotation)
             {
                 $result->addClassLevelAnnotation($annotation);
             }
 
-            foreach ($this->loadMethodLevelAnnotations($reflectionClass) as $annotation)
+            foreach($this->loadMethodLevelAnnotations($reflectionClass) as $annotation)
             {
                 $result->addMethodAnnotation($annotation);
             }
 
             return $result;
         }
-        catch (\Throwable $throwable)
+        catch(\Throwable $throwable)
         {
             throw new ParseAnnotationFailed($throwable->getMessage(), (int) $throwable->getCode(), $throwable);
         }
@@ -96,7 +98,7 @@ class DoctrineReader implements Reader
     private function loadClassLevelAnnotations(\ReflectionClass $class): array
     {
         return \array_map(
-            static function (object $sagaAnnotation) use ($class): ClassLevel
+            static function(object $sagaAnnotation) use ($class): ClassLevel
             {
                 return new ClassLevel($sagaAnnotation, $class->getName());
             },
@@ -113,12 +115,12 @@ class DoctrineReader implements Reader
     {
         $annotations = [];
 
-        foreach ($class->getMethods() as $method)
+        foreach($class->getMethods() as $method)
         {
             $methodAnnotations = $this->reader->getMethodAnnotations($method);
 
             /** @var object $methodAnnotation */
-            foreach ($methodAnnotations as $methodAnnotation)
+            foreach($methodAnnotations as $methodAnnotation)
             {
                 $annotations[] = new MethodLevel($methodAnnotation, $class->getName(), $method);
             }

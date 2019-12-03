@@ -18,11 +18,9 @@ namespace ServiceBus\AnnotationsReader\Tests\Stubs;
  */
 final class TestMethodLevelAnnotation
 {
-    private string $property;
+    /** @var string */
+    private $property;
 
-    /**
-     * @psalm-param array<string, mixed> $data
-     */
     public function __construct(array $data)
     {
         foreach ($data as $key => $value)

@@ -17,19 +17,16 @@ namespace ServiceBus\AnnotationsReader\Annotation;
  */
 final class MethodLevel
 {
-    public object $annotation;
+    /** Origin annotation object */
+    public $annotation;
+
+    /** The class containing the annotation. */
+    public $inClass;
+
+    public $reflectionMethod;
 
     /**
-     * The class containing the annotation.
-     *
-     * @psalm-var class-string
-     */
-    public string $inClass;
-
-    public \ReflectionMethod$reflectionMethod;
-
-    /**
-     * @psalm-param  class-string $inClass
+     * @psalm-assert class-string $inClass
      */
     public function __construct(object $annotation, string $inClass, \ReflectionMethod $reflectionMethod)
     {

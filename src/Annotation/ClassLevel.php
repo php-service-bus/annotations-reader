@@ -17,17 +17,14 @@ namespace ServiceBus\AnnotationsReader\Annotation;
  */
 final class ClassLevel
 {
-    public object $annotation;
+    /** Origin annotation object */
+    public $annotation;
+
+    /** The class containing the annotation. */
+    public $inClass;
 
     /**
-     * The class containing the annotation.
-     *
-     * @psalm-var class-string
-     */
-    public string $inClass;
-
-    /**
-     * @psalm-param  class-string $inClass
+     * @psalm-assert class-string $inClass
      */
     public function __construct(object $annotation, string $inClass)
     {

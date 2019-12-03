@@ -20,8 +20,11 @@ use ServiceBus\AnnotationsReader\Annotation\MethodLevel;
  */
 final class Result
 {
-    public \SplObjectStorage $classLevelCollection;
-    public \SplObjectStorage $methodLevelCollection;
+    /** @var \SplObjectStorage */
+    public $classLevelCollection;
+
+    /** @var \SplObjectStorage */
+    public $methodLevelCollection;
 
     public function __construct()
     {

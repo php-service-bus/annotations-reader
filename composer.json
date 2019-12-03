@@ -27,7 +27,7 @@
     }
   },
   "require": {
-    "php": ">=7.4",
+    "php": ">=7.3",
     "doctrine/annotations": "v1.8.*",
     "doctrine/cache": "v1.10.*"
   },

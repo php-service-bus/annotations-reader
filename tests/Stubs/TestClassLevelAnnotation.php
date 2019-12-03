@@ -18,11 +18,9 @@ namespace ServiceBus\AnnotationsReader\Tests\Stubs;
  */
 final class TestClassLevelAnnotation
 {
-    private string $property;
+    /** @var string */
+    private $property;
 
-    /**
-     * @param array<string, mixed> $data
-     */
     public function __construct(array $data)
     {
         foreach ($data as $key => $value)
@@ -31,9 +29,6 @@ final class TestClassLevelAnnotation
         }
     }
 
-    /**
-     * @return string
-     */
     public function property(): string
     {
         return $this->property;
