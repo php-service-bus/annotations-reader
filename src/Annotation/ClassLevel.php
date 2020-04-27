@@ -17,10 +17,18 @@ namespace ServiceBus\AnnotationsReader\Annotation;
  */
 final class ClassLevel
 {
-    /** Origin annotation object */
+    /**
+     * Origin annotation object
+     *
+     * @var object
+     */
     public $annotation;
 
-    /** The class containing the annotation. */
+    /**
+     * The class containing the annotation.
+     *
+     * @var string
+     */
     public $inClass;
 
     /**
