@@ -3,7 +3,7 @@
 /**
  * PHP Service Bus annotations reader component.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -15,6 +15,6 @@ namespace ServiceBus\AnnotationsReader\Exceptions;
 /**
  *
  */
-final class ParseAnnotationFailed extends \RuntimeException implements AnnotationsReaderExceptionMarker
+final class ParseAttributesFailed extends \RuntimeException
 {
 }

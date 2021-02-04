@@ -1,5 +1,2 @@
 parameters:
-	ignoreErrors:
-		-
-			message: '#with generic class ReflectionClass but does#'
-			path: %currentWorkingDirectory%/src
+    checkGenericClassInNonGenericObjectType: false

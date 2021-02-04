@@ -1,12 +1,16 @@
 ## What is it?
-[![Build Status](https://travis-ci.org/php-service-bus/annotations-reader.svg?branch=v4.1)](https://travis-ci.org/php-service-bus/annotations-reader)
-[![Code Coverage](https://scrutinizer-ci.com/g/php-service-bus/annotations-reader/badges/coverage.png?b=v4.1)](https://scrutinizer-ci.com/g/php-service-bus/annotations-reader/?branch=v4.1)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/php-service-bus/annotations-reader/badges/quality-score.png?b=v4.1)](https://scrutinizer-ci.com/g/php-service-bus/annotations-reader/?branch=v4.1)
+
+[![Packagist](https://img.shields.io/packagist/v/php-service-bus/annotations-reader.svg)](https://packagist.org/packages/php-service-bus/annotations-reader)
+[![Packagist](https://img.shields.io/packagist/dt/php-service-bus/annotations-reader.svg)](https://packagist.org/packages/php-service-bus/annotations-reader)
+![Continuous Integration](https://github.com/php-service-bus/annotations-reader/workflows/Continuous%20Integration/badge.svg)
+[![codecov](https://codecov.io/gh/php-service-bus/annotations-reader/branch/v5.0/graph/badge.svg?token=0bKwdiuo0S)](https://codecov.io/gh/php-service-bus/annotations-reader)
+[![Shepherd](https://shepherd.dev/github/php-service-bus/annotations-reader/coverage.svg)](https://shepherd.dev/github/php-service-bus/annotations-reader)
+
 
 This component is part of the [PHP Service Bus](https://github.com/php-service-bus/service-bus): annotations reader (via [doctrine/annotations](https://github.com/doctrine/annotations)) component
 
 ## Contributing
-Contributions are welcome! Please read [CONTRIBUTING](CONTRIBUTING.md) for details.
+Contributions are welcome! Please read [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
 
 ## Communication Channels
 You can find help and discussion in the following places:

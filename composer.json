@@ -10,7 +10,7 @@
   "authors": [
     {
       "name": "Masiukevich Maksim",
-      "email": "dev@async-php.com",
+      "email": "contacts@desperado.dev",
       "homepage": "https://github.com/mmasiukevich",
       "role": "Developer"
     }
@@ -27,14 +27,12 @@
     }
   },
   "require": {
-    "php": ">=7.4",
-    "doctrine/annotations": "v1.10.*",
-    "doctrine/cache": "v1.10.*"
+    "php": ">=8.0"
   },
   "require-dev": {
-    "php-service-bus/code-style-config": "v1.2.*",
-    "phpunit/phpunit": "v9.2.*",
-    "vimeo/psalm": "v3.13.*",
+    "php-service-bus/code-style-config": "v1.3.*",
+    "phpunit/phpunit": "v9.5.*",
+    "vimeo/psalm": "v4.4.*",
     "phpstan/phpstan": "v0.12.*"
   },
   "prefer-stable": true,

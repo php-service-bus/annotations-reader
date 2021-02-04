@@ -3,7 +3,7 @@
 /**
  * PHP Service Bus annotations reader component.
  *
- * @author  Maksim Masiukevich <dev@async-php.com>
+ * @author  Maksim Masiukevich <contacts@desperado.dev>
  * @license MIT
  * @license https://opensource.org/licenses/MIT
  */
@@ -13,7 +13,7 @@ declare(strict_types = 1);
 namespace ServiceBus\AnnotationsReader;
 
 /**
- * Annotation extractor.
+ * Attributes extractor.
  */
 interface Reader
 {
@@ -22,7 +22,7 @@ interface Reader
      *
      * @psalm-param class-string $class
      *
-     * @throws \ServiceBus\AnnotationsReader\Exceptions\ParseAnnotationFailed
+     * @throws \ServiceBus\AnnotationsReader\Exceptions\ParseAttributesFailed
      */
     public function extract(string $class): Result;
 }
