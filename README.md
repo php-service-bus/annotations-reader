@@ -7,7 +7,7 @@
 [![Shepherd](https://shepherd.dev/github/php-service-bus/annotations-reader/coverage.svg)](https://shepherd.dev/github/php-service-bus/annotations-reader)
 
 
-This component is part of the [PHP Service Bus](https://github.com/php-service-bus/service-bus): annotations reader (via [doctrine/annotations](https://github.com/doctrine/annotations)) component
+This component is part of the [PHP Service Bus](https://github.com/php-service-bus/service-bus): attributes reader component
 
 ## Contributing
 Contributions are welcome! Please read [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
