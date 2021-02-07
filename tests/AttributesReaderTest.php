@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnhandledExceptionInspection */
 
 /**
  * PHP Service Bus annotations reader component.
@@ -29,8 +29,6 @@ final class AttributesReaderTest extends TestCase
 {
     /**
      * @test
-     *
-     * @throws \Throwable
      */
     public function parseEmptyClass(): void
     {
@@ -46,8 +44,6 @@ final class AttributesReaderTest extends TestCase
 
     /**
      * @test
-     *
-     * @throws \Throwable
      */
     public function parseClassWithAnnotations(): void
     {
@@ -80,8 +76,6 @@ final class AttributesReaderTest extends TestCase
 
     /**
      * @test
-     *
-     * @throws \Throwable
      */
     public function parseClassWithErrors(): void
     {
