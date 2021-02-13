@@ -40,7 +40,7 @@ final class AttributesReader implements Reader
 
     private function methodMethodAnnotations(\ReflectionClass $reflectionClass): \SplObjectStorage
     {
-        /** @var \SplObjectStorage<MethodLevel, int> $methodLevelCollection */
+        /** @psalm-var \SplObjectStorage<MethodLevel, int> $methodLevelCollection */
         $methodLevelCollection = new \SplObjectStorage();
 
         foreach ($reflectionClass->getMethods() as $reflectionMethod)
@@ -63,7 +63,7 @@ final class AttributesReader implements Reader
 
     private function classLevelAnnotations(\ReflectionClass $reflectionClass): \SplObjectStorage
     {
-        /** @var \SplObjectStorage<ClassLevel, int> $classLevelCollection */
+        /** @psalm-var \SplObjectStorage<ClassLevel, int> $classLevelCollection */
         $classLevelCollection = new \SplObjectStorage();
 
         foreach ($reflectionClass->getAttributes() as $reflectionAttribute)
