@@ -12,9 +12,6 @@ declare(strict_types=0);
 
 namespace ServiceBus\AnnotationsReader\Exceptions;
 
-/**
- *
- */
 final class ParserConfigurationError extends \LogicException
 {
 }

@@ -16,9 +16,6 @@ use ServiceBus\AnnotationsReader\Attribute\ClassLevel;
 use ServiceBus\AnnotationsReader\Attribute\MethodLevel;
 use ServiceBus\AnnotationsReader\Exceptions\ParseAttributesFailed;
 
-/**
- *
- */
 final class AttributesReader implements Reader
 {
     public function extract(string $class): Result
@@ -38,9 +35,12 @@ final class AttributesReader implements Reader
         }
     }
 
+    /**
+     * @psalm-return \SplObjectStorage<MethodLevel, null>
+     */
     private function methodMethodAnnotations(\ReflectionClass $reflectionClass): \SplObjectStorage
     {
-        /** @psalm-var \SplObjectStorage<MethodLevel, int> $methodLevelCollection */
+        /** @psalm-var \SplObjectStorage<MethodLevel, null> $methodLevelCollection */
         $methodLevelCollection = new \SplObjectStorage();
 
         foreach ($reflectionClass->getMethods() as $reflectionMethod)
@@ -61,9 +61,12 @@ final class AttributesReader implements Reader
         return $methodLevelCollection;
     }
 
+    /**
+     * @psalm-return \SplObjectStorage<ClassLevel, null>
+     */
     private function classLevelAnnotations(\ReflectionClass $reflectionClass): \SplObjectStorage
     {
-        /** @psalm-var \SplObjectStorage<ClassLevel, int> $classLevelCollection */
+        /** @psalm-var \SplObjectStorage<ClassLevel, null> $classLevelCollection */
         $classLevelCollection = new \SplObjectStorage();
 
         foreach ($reflectionClass->getAttributes() as $reflectionAttribute)
