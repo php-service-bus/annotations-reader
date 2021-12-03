@@ -34,7 +34,7 @@ final class AttributesReaderTest extends TestCase
      */
     public function parseEmptyClass(): void
     {
-        $object = new class()
+        $object = new class ()
         {
         };
 
