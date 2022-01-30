@@ -37,7 +37,7 @@ final class Result
     public $methodLevelCollection;
 
     /**
-     * @psalm-param  \SplObjectStorage<ClassLevel, null> $classLevelCollection
+     * @psalm-param \SplObjectStorage<ClassLevel, null> $classLevelCollection
      * @psalm-param \SplObjectStorage<MethodLevel, null> $methodLevelCollection
      */
     public function __construct(\SplObjectStorage $classLevelCollection, \SplObjectStorage $methodLevelCollection)
