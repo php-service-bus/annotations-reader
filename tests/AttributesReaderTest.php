@@ -34,8 +34,7 @@ final class AttributesReaderTest extends TestCase
      */
     public function parseEmptyClass(): void
     {
-        $object = new class ()
-        {
+        $object = new class () {
         };
 
         $annotations = (new AttributesReader())->extract(\get_class($object));
@@ -55,21 +54,19 @@ final class AttributesReaderTest extends TestCase
         self::assertCount(1, $result->methodLevelCollection);
 
         $classLevelAnnotations  = $result->classLevelCollection;
-        $methodLevelAnnotations =$result->methodLevelCollection;
+        $methodLevelAnnotations = $result->methodLevelCollection;
 
         self::assertCount(1, $classLevelAnnotations);
         self::assertCount(1, $methodLevelAnnotations);
 
         /** @var ClassLevel $classLevelAttribute */
-        foreach ($classLevelAnnotations as $classLevelAttribute)
-        {
+        foreach ($classLevelAnnotations as $classLevelAttribute) {
             self::assertSame(ClassWithCorrectAttributes::class, $classLevelAttribute->inClass);
             self::assertInstanceOf(TestClassLevelAttribute::class, $classLevelAttribute->attribute);
         }
 
         /** @var MethodLevel $methodLevelAttribute */
-        foreach ($methodLevelAnnotations as $classLevelAttribute)
-        {
+        foreach ($methodLevelAnnotations as $classLevelAttribute) {
             self::assertNotNull($classLevelAttribute->reflectionMethod);
             self::assertSame(ClassWithCorrectAttributes::class, $classLevelAttribute->inClass);
             self::assertInstanceOf(TestMethodLevelAttribute::class, $classLevelAttribute->attribute);

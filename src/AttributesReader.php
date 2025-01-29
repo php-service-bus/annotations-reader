@@ -20,17 +20,14 @@ final class AttributesReader implements Reader
 {
     public function extract(string $class): Result
     {
-        try
-        {
+        try {
             $reflectionClass = new \ReflectionClass($class);
 
             return new Result(
                 classLevelCollection: $this->classLevelAnnotations($reflectionClass),
                 methodLevelCollection: $this->methodMethodAnnotations($reflectionClass)
             );
-        }
-        catch (\Throwable $throwable)
-        {
+        } catch (\Throwable $throwable) {
             throw new ParseAttributesFailed($throwable->getMessage(), (int) $throwable->getCode(), $throwable);
         }
     }
@@ -43,11 +40,8 @@ final class AttributesReader implements Reader
         /** @psalm-var \SplObjectStorage<MethodLevel, null> $methodLevelCollection */
         $methodLevelCollection = new \SplObjectStorage();
 
-        foreach ($reflectionClass->getMethods() as $reflectionMethod)
-        {
-            foreach ($reflectionMethod->getAttributes() as $reflectionAttribute)
-            {
-                /** @psalm-suppress ArgumentTypeCoercion */
+        foreach ($reflectionClass->getMethods() as $reflectionMethod) {
+            foreach ($reflectionMethod->getAttributes() as $reflectionAttribute) {
                 $methodLevelCollection->attach(
                     new MethodLevel(
                         attribute: $reflectionAttribute->newInstance(),
@@ -69,9 +63,7 @@ final class AttributesReader implements Reader
         /** @psalm-var \SplObjectStorage<ClassLevel, null> $classLevelCollection */
         $classLevelCollection = new \SplObjectStorage();
 
-        foreach ($reflectionClass->getAttributes() as $reflectionAttribute)
-        {
-            /** @psalm-suppress ArgumentTypeCoercion */
+        foreach ($reflectionClass->getAttributes() as $reflectionAttribute) {
             $classLevelCollection->attach(
                 new ClassLevel(
                     attribute: $reflectionAttribute->newInstance(),
